@@ -4,7 +4,7 @@ import clsx from "clsx";
 export const Sidebar = ({ filters, currentFilter }) => {
   return (
     <aside className="flex w-full flex-wrap gap-4 lg:max-w-[200px] lg:flex-col">
-      <MenuItem isActive={!filters} filter="" key="filter">
+      <MenuItem isActive={!currentFilter} filter="" key="filter">
         All
       </MenuItem>
       {filters.map((filter) => (
