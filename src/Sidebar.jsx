@@ -1,10 +1,37 @@
 import Link from "next/link";
-import { REACT_CARDS } from "./reactCards";
+import clsx from "clsx";
 
-export const Sidebar = () => {
-  const params = new URL({REACT_CARDS[url]}).searchParams;
-  const category = params.get("name");
-  console.log(category);
+export const Sidebar = ({ filters, currentFilter }) => {
+  return (
+    <aside className="flex w-full flex-wrap gap-4 lg:max-w-[200px] lg:flex-col">
+      <MenuItem isActive={!filters} filter="" key="filter">
+        All
+      </MenuItem>
+      {filters.map((filter) => (
+        <MenuItem
+          key={filter}
+          filter={filter}
+          isActive={filter === currentFilter}
+        >
+          {filter}
+        </MenuItem>
+      ))}
+    </aside>
+  );
+};
 
-  return <Link href="/">Dashboard</Link>;
+const MenuItem = ({ filter, children, isActive }) => {
+  return (
+    <Link
+      href={`/?filter=${filter}`}
+      className={clsx(
+        " rounded-md px-2 py-1 capitalize transition-colors hover:bg-gray-200 ",
+        {
+          "font-bold": isActive,
+        }
+      )}
+    >
+      {children}
+    </Link>
+  );
 };
