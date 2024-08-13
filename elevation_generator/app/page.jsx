@@ -18,7 +18,7 @@ export default function Home() {
           defaultValue="40"
           className="range range-primary"
         />
-        <p className="py-3">Border Radius</p>
+        <p className="py-3">Border Radius -</p>
         <input
           type="range"
           min={0}
